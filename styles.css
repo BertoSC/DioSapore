@@ -455,7 +455,7 @@ section {
     margin: 0;
     overflow: hidden;
     margin-bottom: 40px;
-    background-color: white; /* Fondo claro para asegurar visibilidad */
+    background-color: #800020; /* Fondo claro para asegurar visibilidad */
 }
 
 .localizacion-container {
@@ -485,8 +485,8 @@ section {
     padding: 25px 30px;
     opacity: 1; /* Asegúrate de que el texto sea visible desde el principio */
     z-index: 2; /* Asegura que el texto esté visible */
-    background-color: rgba(255, 255, 255, 01); /* Fondo semitransparente */
-    color: black; /* Color del texto */
+    background-color: #800020; /* Fondo semitransparente */
+    color: white; /* Color del texto */
     margin-right: -40px; /* Superpone el texto ligeramente a la imagen */
     margin-top: auto;
     margin-bottom: auto;
@@ -495,15 +495,15 @@ section {
 }
 
 /* Añadir color de texto */
-.localizacion-texto h2, .localizacion-texto p {
-    color: #333; /* Color oscuro para asegurar visibilidad */
+.localizacion-texto p {
+    color: white; /* Color oscuro para asegurar visibilidad */
 }
 
 .localizacion-texto h2 {
     font-size: 2rem;
     margin-bottom: 15px;
     text-align: center; /* Alineación a la izquierda */
-    color: #800020;
+    color: white;
     
 }
 
@@ -513,7 +513,7 @@ section {
 }
 
 .btn-localizacion {
-    background-color: #800020; /* Color burdeos del botón */
+    background-color: #933847; /* Color burdeos del botón */
     color: white; /* Color del texto del botón */
     padding: 10px 20px; /* Espacio alrededor del texto del botón */
     text-decoration: none; /* Elimina el subrayado */
@@ -526,11 +526,11 @@ section {
     max-width: 200px; /* Ancho máximo para el botón */
     margin: 20px auto 0; /* Centra el botón y añade margen superior */
     margin-bottom: 20px;
-    border: 1px solid transparent; /* Añade un borde al pasar el ratón */
+    border: 2px solid transparent; /* Añade un borde al pasar el ratón */
 }
 
 .btn-localizacion:hover {
-    border: 1px solid #800020;
+    border: 2px solid #800020;
     background-color: white;
     transform: scale(1.1);
     color: #800020;
