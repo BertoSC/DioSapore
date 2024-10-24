@@ -1,0 +1,603 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+/* HEADER */
+
+header {
+    background: url('img/mantel/687160\ HORIZONTAL.jpg'); /* Repite la imagen */
+    background-size: cover; /* Cubre todo el header */
+   /* Color burdeosbackground-color: #800020;  */
+   
+    color: white;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+    position: relative; /* Para que el marco esté dentro del header */
+    
+}
+
+header::before {
+    content: ""; /* Necesario para mostrar el pseudo-elemento */
+    position: absolute; /* Posiciona el pseudo-elemento */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(128, 0, 32, 0.9), rgba(168, 76, 97, 0.8));
+    
+    z-index: 1; /* Asegura que esté por debajo del contenido del header */
+}
+
+
+header h1 {
+    margin: 0;
+    padding-bottom: 10px;
+    font-family: 'Dancing Script';
+    font-size: 40px;
+}
+
+/* MARCO DENTRO DEL HEADER */
+header .marco {
+    position: absolute;
+    top: 7px;   /* Puedes ajustar según tu diseño */
+    left: 7px;  /* Ajusta para centrarlo correctamente */
+    right: 7px; /* Deja algo de espacio para los bordes */
+    bottom: 7px;
+    border: 1px solid white;  /* Borde blanco */
+    box-sizing: border-box;   /* Asegura que el padding no altere el tamaño */
+    pointer-events: none;     /* Hace que el marco sea 'invisible' al ratón */
+    z-index: 1;               /* Asegura que el marco esté por encima de otros elementos */
+}
+
+/* Para evitar que el contenido del header quede cubierto por el marco */
+header h1, header nav {
+    position: relative;
+    z-index: 2;  /* Asegura que el menú esté por encima del marco */
+    padding-bottom: 10px;
+    
+}
+
+/*
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+} */
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+   
+   /*  display: flex;
+   justify-content: space-around;
+    background-color: #333;*/
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 20px;
+    font-size: 22px;
+    font-family: 'Dancing Script';
+    position: relative;
+    overflow: hidden; /* Para ocultar el subrayado cuando está animando */
+    transition: color 0.3s ease-in-out; /* Cambio de color suave al pasar el ratón */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: width 0.4s ease-in-out; /* Transición del subrayado */
+}
+
+nav ul li a:hover {
+    color: #FFD700; /* Cambia el color del texto cuando pasas el ratón */
+}
+
+nav ul li a:hover::after {
+    width: 100%; /* Cuando el ratón pasa por encima, subraya el texto completamente */
+}
+
+main {
+    padding: 20px;
+}
+
+/* Estilos básicos de secciones */
+
+h2 {
+    color: #800020;
+}
+
+section {
+    margin-bottom: 40px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* CARRUSEL*/
+
+#carrusel {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 600px; /* Ajusta la altura según prefieras */
+}
+
+#carrusel, .carousel-container {
+    margin: 0;
+    padding: 0;
+    border: none; /* Elimina cualquier borde por defecto */
+}
+
+.carousel-slide {
+    /*display: none;*/
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Imagen invisible por defecto */
+    transition: opacity 1.5s ease-in-out; /* Transición suave */
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegúrate de que las imágenes cubran el área sin distorsión */
+}
+
+.carousel-text {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    padding: 10px 20px;
+    /*border-radius: 10px;*/
+    font-family: 'Dancing Script';
+    width: 100%;
+}
+
+.carousel-text h2 {
+    font-size: 3rem;
+    color: white;
+    margin: 0;
+}
+
+.carousel-text p {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Botones de navegación */
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px; /* Esto centra verticalmente el botón */
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.6s ease;
+    user-select: none;
+    z-index: 10; /* Asegúrate de que estén por encima del contenido */
+}
+
+.prev {
+    left: 10px; /* Ajusta la posición a la izquierda */
+    border-radius: 3px 0 0 3px; /* Asegúrate de que el borde esté bien definido */
+}
+
+.next {
+    right: 10px; /* Ajusta la posición a la derecha */
+    border-radius: 0 3px 3px 0; /* Asegúrate de que el borde esté bien definido */
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    
+}
+
+/* Para mostrar la imagen activa */
+.carousel-slide.active {
+    opacity: 1; /* Cuando una imagen está activa, su opacidad es 1 */
+}
+
+
+
+/* BANNER MENÚ*/
+
+.banner {
+    position: relative; /* Para que los elementos dentro se posicionen correctamente */
+    background-image: url('img/banneringredientes.jpg'); /* Asegúrate de reemplazar con la ruta correcta de tu imagen */
+    background-size: cover; /* Cubre todo el área del banner */
+    
+    height: 400px; /* Altura del banner */
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    text-align: center; /* Centra el texto */
+    color: white; /* Color del texto */
+    padding: 20px; /* Espacio alrededor del contenido */
+    margin-top: 40px; /* Aumenta el margen superior para más separación */
+    border-radius: 8px;
+}
+
+.banner::before {
+    content: ""; /* Necesario para mostrar el pseudo-elemento */
+    position: absolute; /* Posiciona el pseudo-elemento */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(128, 0, 32, 0.5); /* Filtro burdeos semitransparente */
+    z-index: 1; /* Asegura que esté por debajo del contenido */
+    border-radius: 5px;
+}
+
+.banner-content {
+    position: relative; /* Permite que el contenido se posicione por encima del pseudo-elemento */
+    z-index: 2; /* Asegura que el contenido esté encima del filtro */
+}
+
+.banner h1 {
+    font-size: 26px; /* Tamaño del título */
+    margin: 15px 0; /* Margen alrededor del título */
+    font-family: 'Lato';
+}
+
+.banner p {
+    font-size: 18px; /* Tamaño del párrafo */
+    margin-bottom: 50px; /* Margen debajo del párrafo */
+    font-family: 'Lato';
+}
+
+.banner-button {
+    background-color: #800020; /* Color burdeos del botón */
+    color: white; /* Color del texto del botón */
+    padding: 10px 20px; /* Espacio alrededor del texto del botón */
+    text-decoration: none; /* Elimina el subrayado */
+    font-size: 20px; /* Tamaño del texto del botón */
+    font-family: 'Dancing Script';
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a mano al pasar el ratón */
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves para el color y el tamaño */
+}
+
+.banner-button:hover {
+    background-color: white; /* Color del botón al pasar el ratón */
+    transform: scale(1.1); /* Aumenta el tamaño ligeramente al pasar el ratón */
+    color: #800020;
+}
+
+
+/* HISTORIA */
+
+.historia-section {
+    padding: 0; /* Elimina el espaciado alrededor de la sección */
+    margin: 0; /* Elimina el margen */
+    overflow: hidden; /* Evita que se muestren bordes indeseados */
+    margin-bottom: 40px;
+}
+
+.historia-container {
+    display: grid; /* Cambia a grid */
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    max-width: 100%; /* Ancho máximo de la sección */
+    margin: 0; /* Elimina el margen */
+    position: relative; /* Para el uso de position en el texto */
+}
+
+.historia-imagen {
+    background-image: url('img/tradicion.jpg'); /* URL de tu imagen */
+    background-size: cover; /* Cubre todo el div */
+    background-position: center; /* Centra la imagen */
+    height: 400px; /* Ajusta la altura según prefieras */
+    margin: 0; /* Elimina márgenes */
+    padding: 0; /* Elimina padding */
+    opacity: 1; /* Asegúrate de que la imagen sea visible */
+    transition: opacity 1s ease-in, filter 0.5s ease-in; /* Transición de opacidad y filtro */
+    filter: grayscale(100%); /* Aplica filtro de escala de grises */
+}
+
+.historia-imagen:hover {
+    filter: grayscale(0%); /* Elimina el filtro al pasar el ratón */
+}
+
+.historia-texto {
+    font-family: 'Lato';
+    padding: 20px; /* Espaciado interior reducido */
+    display: flex;
+    flex-direction: column; /* Organiza los elementos verticalmente */
+    justify-content: center; /* Centra el texto verticalmente */
+    opacity: 0; /* Comienza oculto */
+    transition: opacity 1s ease-in, transform 0.5s ease-in; /* Transición de opacidad y transformación */
+    position: relative; /* Necesario para la superposición */
+    z-index: 1; /* Asegura que el texto esté por encima de la imagen */
+    background: rgba(255, 255, 255, 1); /* Fondo semitransparente para el texto */
+    margin-left: -50px; /* Superpone el texto a la imagen */
+    max-width: 120%; /* Ancho máximo para el contenedor del texto */
+    margin-top: auto; /* Para centrar verticalmente en el espacio restante */
+    margin-bottom: auto; /* Para centrar verticalmente en el espacio restante */
+    padding: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* Nueva animación para el texto */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px); /* Comienza desfasado hacia abajo */
+        opacity: 0; /* Comienza invisible */
+    }
+    to {
+        transform: translateY(0); /* Termina en su posición original */
+        opacity: 1; /* Termina visible */
+    }
+}
+
+/* Aplicar animación de deslizamiento al texto */
+.historia-texto.show {
+    opacity: 1; /* Muestra el texto */
+    animation: slideIn 0.5s forwards; /* Añade la animación al cargar */
+}
+
+.historia-texto h2 {
+    font-size: 2rem; /* Tamaño del título */
+    margin-bottom: 15px; /* Espaciado debajo del título */
+    text-align: center;
+}
+
+.historia-texto p {
+    font-size: 1rem; /* Tamaño del texto */
+    margin-bottom: 15px; /* Espaciado debajo del texto */
+}
+
+.btn-historia {
+    background-color: #800020; /* Color burdeos del botón */
+    color: white; /* Color del texto del botón */
+    padding: 10px 20px; /* Espacio alrededor del texto del botón */
+    text-decoration: none; /* Elimina el subrayado */
+    font-size: 20px; /* Tamaño del texto del botón */
+    font-family: 'Dancing Script';
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a mano al pasar el ratón */
+    display: inline-block; /* Para que se respete el padding */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves para el color y el tamaño */
+    max-width: 200px; /* Ancho máximo para el botón */
+    margin: 20px auto 0; /* Centra el botón y añade margen superior */
+    margin-bottom: 20px;
+    border: 1px solid transparent; /* Añade un borde al pasar el ratón */
+}
+
+/* Efecto hover para el botón */
+.btn-historia:hover {
+    border: 1px solid #800020; /* Añade un borde al pasar el ratón */
+    background-color: white; /* Color del botón al pasar el ratón */
+    transform: scale(1.1); /* Aumenta el tamaño ligeramente al pasar el ratón */
+    color: #800020; /* Cambia el color del texto al pasar el ratón */
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .historia-container {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+
+    .historia-texto {
+        text-align: center; /* Centra el texto en pantallas pequeñas */
+        margin-left: 0; /* Restablece el margen para el texto en pantallas pequeñas */
+        margin-top: 20px; /* Agrega un margen superior para separación */
+    }
+
+    .historia-imagen {
+        height: 300px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+}
+
+/* Para mostrar el texto y el botón con fade-in */
+.show {
+    opacity: 1; /* Muestra el texto */
+}
+/* Usar JS para añadir la clase show */
+
+
+
+/* LOCALIZACION*/
+
+/* Estilos para la nueva sección de localización */
+
+.localizacion-section {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    margin-bottom: 40px;
+    background-color: white; /* Fondo claro para asegurar visibilidad */
+}
+
+.localizacion-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas: texto a la izquierda, imagen a la derecha */
+    max-width: 100%;
+    margin: 0;
+    position: relative;
+    height: 100%; /* Asegura que el contenedor ocupe espacio visible */
+}
+
+.localizacion-imagen {
+    background-image: url('img/exterior.jpg'); /* Reemplaza con la imagen correcta */
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.localizacion-texto {
+    font-family: 'Lato';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px 30px;
+    opacity: 1; /* Asegúrate de que el texto sea visible desde el principio */
+    z-index: 2; /* Asegura que el texto esté visible */
+    background-color: rgba(255, 255, 255, 01); /* Fondo semitransparente */
+    color: black; /* Color del texto */
+    margin-right: -40px; /* Superpone el texto ligeramente a la imagen */
+    margin-top: auto;
+    margin-bottom: auto;
+    max-width: 120%;
+    height: auto; /* Asegura que el texto ocupe espacio */
+}
+
+/* Añadir color de texto */
+.localizacion-texto h2, .localizacion-texto p {
+    color: #333; /* Color oscuro para asegurar visibilidad */
+}
+
+.localizacion-texto h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center; /* Alineación a la izquierda */
+    color: #800020;
+    
+}
+
+.localizacion-texto p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.btn-localizacion {
+    background-color: #800020; /* Color burdeos del botón */
+    color: white; /* Color del texto del botón */
+    padding: 10px 20px; /* Espacio alrededor del texto del botón */
+    text-decoration: none; /* Elimina el subrayado */
+    font-size: 20px; /* Tamaño del texto del botón */
+    font-family: 'Dancing Script';
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a mano al pasar el ratón */
+    display: inline-block; /* Para que se respete el padding */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves para el color y el tamaño */
+    max-width: 200px; /* Ancho máximo para el botón */
+    margin: 20px auto 0; /* Centra el botón y añade margen superior */
+    margin-bottom: 20px;
+    border: 1px solid transparent; /* Añade un borde al pasar el ratón */
+}
+
+.btn-localizacion:hover {
+    border: 1px solid #800020;
+    background-color: white;
+    transform: scale(1.1);
+    color: #800020;
+}
+
+/* Responsivo para pantallas pequeñas */
+
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .localizacion-container {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+    }
+
+    /* Cambia el orden de los elementos */
+    .localizacion-imagen {
+        order: -1; /* Mueve la imagen arriba */
+        height: 300px; /* Ajusta la altura de la imagen */
+    }
+
+    .localizacion-texto {
+        margin-right: 0;
+        text-align: center;
+        margin-top: 20px;
+        order: 1; /* Mantén el texto abajo */
+    }
+}
+
+/* FORMULARIO DE CONTACTO*/
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form input,
+form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #800020; /* Color burdeos */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #660016; /* Color burdeos más oscuro */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #800020; /* Color burdeos */
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
