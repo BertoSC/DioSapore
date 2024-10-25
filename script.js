@@ -52,6 +52,24 @@ document.addEventListener('DOMContentLoaded', function () {
     historiaTexto.classList.add('show'); // Añade la clase que hace visible el texto
 });
 
++// SHOW 
+document.addEventListener("DOMContentLoaded", function() {
+    const elementosTexto = document.querySelectorAll(".historia-texto, .localizacion-texto");
+
+    function animarElementos() {
+        elementosTexto.forEach((elemento) => {
+            const rect = elemento.getBoundingClientRect();
+            const elementoVisible = rect.top <= window.innerHeight * 0.8; // Activa antes de que esté completamente visible
+            if (elementoVisible) {
+                elemento.classList.add("show");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", animarElementos);
+    animarElementos(); // Llamada inicial para detectar si están visibles al cargar
+});
+
 
 // Formulario de contacto
 
@@ -69,5 +87,3 @@ document.getElementById("contactForm").addEventListener("submit", function(event
         document.getElementById("form-response").innerText = "Por favor, completa todos los campos.";
     }
 });
-
-
