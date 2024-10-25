@@ -68,30 +68,11 @@ header h1, header nav {
     
 }
 
-/*
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-} */
 
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-   
-   /*  display: flex;
-   justify-content: space-around;
-    background-color: #333;*/
 }
 
 nav ul li {
@@ -117,6 +98,8 @@ nav ul li a::after {
     bottom: 0;
     left: 0;
     background-color: white;
+    transform: scaleX(0); /* Oculto inicialmente */
+    transform-origin: center;
     transition: width 0.4s ease-in-out; /* Transición del subrayado */
 }
 
@@ -125,8 +108,15 @@ nav ul li a:hover {
 }
 
 nav ul li a:hover::after {
-    width: 100%; /* Cuando el ratón pasa por encima, subraya el texto completamente */
+    content: ""; /* Elemento vacío para crear la línea de subrayado */
+    position: absolute;
+    width: 100%;
+    height: 2px; /* Grosor de la línea de subrayado */
+    background-color: #e2e2d5; /* Color de la línea */
+    transition: transform 0.3s ease; /* Transición suave para el hover */
+    transform: scaleX(1); /* Mantiene el subrayado a lo largo de todo el ancho */
 }
+
 
 main {
     padding: 20px;
@@ -246,7 +236,6 @@ section {
 }
 
 
-
 /* BANNER MENÚ*/
 
 .banner {
@@ -351,38 +340,19 @@ section {
     font-family: 'Lato';
     padding: 20px; /* Espaciado interior reducido */
     display: flex;
-    flex-direction: column; /* Organiza los elementos verticalmente */
+    flex-direction: column; 
     justify-content: center; /* Centra el texto verticalmente */
-    opacity: 0; /* Comienza oculto */
-    transition: opacity 1s ease-in, transform 0.5s ease-in; /* Transición de opacidad y transformación */
     position: relative; /* Necesario para la superposición */
     z-index: 1; /* Asegura que el texto esté por encima de la imagen */
-    background: rgba(255, 255, 255, 1); /* Fondo semitransparente para el texto */
+    background: rgba(255, 255, 255, 1);  
     margin-left: -50px; /* Superpone el texto a la imagen */
     max-width: 120%; /* Ancho máximo para el contenedor del texto */
     margin-top: auto; /* Para centrar verticalmente en el espacio restante */
     margin-bottom: auto; /* Para centrar verticalmente en el espacio restante */
     padding: 25px;
     padding-left: 30px;
-    padding-right: 30px;
-}
-
-/* Nueva animación para el texto */
-@keyframes slideIn {
-    from {
-        transform: translateY(20px); /* Comienza desfasado hacia abajo */
-        opacity: 0; /* Comienza invisible */
-    }
-    to {
-        transform: translateY(0); /* Termina en su posición original */
-        opacity: 1; /* Termina visible */
-    }
-}
-
-/* Aplicar animación de deslizamiento al texto */
-.historia-texto.show {
-    opacity: 1; /* Muestra el texto */
-    animation: slideIn 0.5s forwards; /* Añade la animación al cargar */
+    padding-right: 30px; 
+  
 }
 
 .historia-texto h2 {
@@ -483,11 +453,11 @@ section {
     flex-direction: column;
     justify-content: center;
     padding: 25px 30px;
-    opacity: 1; /* Asegúrate de que el texto sea visible desde el principio */
+    
     z-index: 2; /* Asegura que el texto esté visible */
     background-color: #800020; /* Fondo semitransparente */
     color: white; /* Color del texto */
-    margin-right: -40px; /* Superpone el texto ligeramente a la imagen */
+    margin-right: -50px; /* Superpone el texto ligeramente a la imagen */
     margin-top: auto;
     margin-bottom: auto;
     max-width: 120%;
@@ -511,6 +481,8 @@ section {
     font-size: 1rem;
     margin-bottom: 15px;
 }
+
+
 
 .btn-localizacion {
     background-color: #933847; /* Color burdeos del botón */
@@ -536,7 +508,22 @@ section {
     color: #800020;
 }
 
-/* Responsivo para pantallas pequeñas */
+/* animacion*/
+
+/* Configuración inicial para el fade-in */
+.historia-texto, .localizacion-texto {
+    opacity: 0; /* Comienza invisible */
+    transform: translateY(20px); /* Desfase hacia abajo */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animación de opacidad y desplazamiento */
+}
+
+/* Efecto de deslizamiento hacia arriba */
+.historia-texto.show, .localizacion-texto.show {
+    opacity: 1; /* Visible al aplicar la clase show */
+    transform: translateY(0); /* Sin desplazamiento */
+}
+
+
 
 
 /* Responsivo para pantallas pequeñas */
