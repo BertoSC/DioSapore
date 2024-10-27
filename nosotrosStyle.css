@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+/* HEADER */
+
+header {
+    background: url('img/mantel/687160\ HORIZONTAL.jpg');
+    /* Repite la imagen */
+    background-size: cover;
+    /* Cubre todo el header */
+    /* Color burdeosbackground-color: #800020;  */
+
+    color: white;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    /* Para que el marco esté dentro del header */
+
+}
+
+header::before {
+    content: "";
+    /* Necesario para mostrar el pseudo-elemento */
+    position: absolute;
+    /* Posiciona el pseudo-elemento */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #800020, rgba(168, 76, 97, 0.8));
+
+    z-index: 1;
+    /* Asegura que esté por debajo del contenido del header */
+}
+
+
+header h1 {
+    margin: 0;
+    padding-bottom: 10px;
+    font-family: 'Dancing Script';
+    font-size: 40px;
+}
+
+/* MARCO DENTRO DEL HEADER */
+header .marco {
+    position: absolute;
+    top: 7px;
+    /* Puedes ajustar según tu diseño */
+    left: 7px;
+    /* Ajusta para centrarlo correctamente */
+    right: 7px;
+    /* Deja algo de espacio para los bordes */
+    bottom: 7px;
+    border: 1px solid white;
+    /* Borde blanco */
+    box-sizing: border-box;
+    /* Asegura que el padding no altere el tamaño */
+    pointer-events: none;
+    /* Hace que el marco sea 'invisible' al ratón */
+    z-index: 1;
+    /* Asegura que el marco esté por encima de otros elementos */
+}
+
+/* Para evitar que el contenido del header quede cubierto por el marco */
+header h1,
+header nav {
+    position: relative;
+    z-index: 2;
+    /* Asegura que el menú esté por encima del marco */
+    padding-bottom: 10px;
+
+}
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 20px;
+    font-size: 22px;
+    font-family: 'Dancing Script';
+    position: relative;
+    overflow: hidden;
+    /* Para ocultar el subrayado cuando está animando */
+    transition: color 0.3s ease-in-out;
+    /* Cambio de color suave al pasar el ratón */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform: scaleX(0);
+    /* Oculto inicialmente */
+    transform-origin: center;
+    transition: width 0.4s ease-in-out;
+    /* Transición del subrayado */
+}
+
+nav ul li a:hover {
+    color: #FFD700;
+    /* Cambia el color del texto cuando pasas el ratón */
+}
+
+nav ul li a:hover::after {
+    content: "";
+    /* Elemento vacío para crear la línea de subrayado */
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    /* Grosor de la línea de subrayado */
+    background-color: #e2e2d5;
+    /* Color de la línea */
+    transition: transform 0.3s ease;
+    /* Transición suave para el hover */
+    transform: scaleX(1);
+    /* Mantiene el subrayado a lo largo de todo el ancho */
+}
+
+
+main {
+    padding: 20px;
+}
+
+/* Estilos básicos de secciones */
+
+h2 {
+    color: #800020;
+}
+
+section {
+    margin-bottom: 40px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* BANNER*/
+
+.banner {
+    position: relative;
+    /* Para que los elementos dentro se posicionen correctamente */
+    background-image: url('img/bannernosotros.png');
+    /* Asegúrate de reemplazar con la ruta correcta de tu imagen */
+    background-size: cover;
+    /* Cubre todo el área del banner */
+    background-position: center;
+
+    height: 400px;
+    /* Altura del banner */
+    display: flex;
+    /* Usamos flexbox para centrar el contenido */
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    text-align: center;
+    /* Centra el texto */
+    color: white;
+    /* Color del texto */
+    padding: 20px;
+    /* Espacio alrededor del contenido */
+    margin-top: 40px;
+    /* Aumenta el margen superior para más separación */
+    border-radius: 8px;
+}
+
+.banner::before {
+    content: "";
+    /* Necesario para mostrar el pseudo-elemento */
+    position: absolute;
+    /* Posiciona el pseudo-elemento */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(128, 0, 32, 0.5);
+    /* Filtro burdeos semitransparente */
+    z-index: 1;
+    /* Asegura que esté por debajo del contenido */
+    border-radius: 5px;
+}
+
+.banner-content {
+    position: relative;
+    /* Permite que el contenido se posicione por encima del pseudo-elemento */
+    z-index: 2;
+    /* Asegura que el contenido esté encima del filtro */
+}
+
+.banner-content>h1 {
+    font-size: 40px;
+    /* Tamaño del título */
+    margin: 15px 0;
+    /* Margen alrededor del título */
+    font-family: 'Dancing Script', cursive;
+    /* Asegura el uso de la fuente Dancing Script */
+}
+
+/* HISTORIA*/
+
+#historia {
+    padding: 0;
+    /* Elimina el espaciado alrededor de la sección */
+    margin: 0;
+    /* Elimina el margen */
+    overflow: hidden;
+    /* Evita que se muestren bordes indeseados */
+    margin-bottom: 40px;
+}
+
+.nosotros {
+    display: grid;
+    /* Cambia a grid */
+    grid-template-columns: 1fr 1fr;
+    /* Dos columnas de igual tamaño */
+    max-width: 100%;
+    
+    /* Ancho máximo de la sección */
+    margin: 0;
+    /* Elimina el margen */
+
+
+}
+
+.nosotros-imagen {
+    background-image: url('img/GettyImages-1134321103.webp');
+    /* URL de tu imagen */
+    background-size: cover;
+    /* Cubre todo el div */
+    width: 100%;
+    /* Centra la imagen */
+    margin: 0;
+    /* Elimina márgenes */
+    padding: 0;
+    /* Elimina padding */
+    opacity: 1;
+    /* Asegúrate de que la imagen sea visible */
+    transition: opacity 1s ease-in, filter 0.5s ease-in;
+    /* Transición de opacidad y filtro */
+    filter: grayscale(100%);
+    /* Aplica filtro de escala de grises */
+    height: 600px;
+}
+
+.nosotros-imagen:hover {
+    filter: grayscale(0%);
+    /* Elimina el filtro al pasar el ratón */
+}
+
+.historia-texto {
+    font-family: 'Lato';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centra el texto verticalmente */
+    background: rgba(255, 255, 255, 1);
+
+    margin-top: auto;
+    /* Para centrar verticalmente en el espacio restante */
+    margin-bottom: auto;
+    /* Para centrar verticalmente en el espacio restante */
+    padding: 40px;
+    
+
+}
+
+.historia-texto>h2 {
+    font-size: 2rem;
+    /* Tamaño del título */
+    margin-bottom: 15px;
+    /* Espaciado debajo del título */
+    text-align: center;
+}
+
+.historia-texto p {
+    font-size: 1rem;
+    /* Tamaño del texto */
+    margin-bottom: 15px;
+    /* Espaciado debajo del texto */
+}
+
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .nosotros {
+        grid-template-columns: 1fr;
+        /* Una columna en pantallas pequeñas */
+    }
+
+    .historia-texto {
+        text-align: center;
+        /* Centra el texto en pantallas pequeñas */
+        margin-left: 0;
+        /* Restablece el margen para el texto en pantallas pequeñas */
+        margin-top: 20px;
+        /* Agrega un margen superior para separación */
+    }
+
+    .nosotros-imagen {
+        height: 300px;
+        /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+    
+}
+
+
+/* VIDEO */
+
+.video-fondo {
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    height: 50%;
+    filter: grayscale(100%);
+    transition: opacity 1s ease-in, filter 0.5s ease-in;
+    margin: auto;
+    margin-bottom: 40px;
+    
+}
+
+.video-fondo:hover {
+    filter: grayscale(0%);
+   
+}
+
+.video-fondo iframe {
+
+
+    width: 100%;
+    height: 100%;
+}
+
+.contenido {
+    position: relative;
+    color: white;
+    padding: 20px;
+    z-index: 1;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #800020;
+    /* Color burdeos */
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    /* Más espacio para un mejor diseño */
+    width: 100%;
+    font-family: 'Lato';
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.footer-menu {
+    display: flex;
+    gap: 20px;
+    /* Espacio entre los enlaces */
+    flex-wrap: wrap;
+    /* Permite que el menú sea responsivo */
+    justify-content: center;
+    /* Centra el menú */
+    margin: 10px 0;
+    /* Espacio arriba y abajo */
+}
+
+.footer-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    /* Transición de color en hover */
+}
+
+.footer-menu a:hover {
+    color: #ffd700;
+    /* Color dorado al pasar el ratón */
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.8rem;
+}
+
+.footer-credit {
+    font-style: italic;
+    font-size: 0.8rem;
+    align-items: center;
+    justify-content: center;
+    /* Centra el menú */
+    margin: 15px 0;
+    /* Espacio arriba y abajo */
+}
+
+#footer-firma {
+    justify-content: center;
+    /* Centra el menú */
+    margin: 10px 0;
+    /* Espacio arriba y abajo */
+
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        /* Espacio entre elementos */
+    }
+
+    .footer-menu {
+        gap: 15px;
+        /* Reduce el espacio entre enlaces en pantallas pequeñas */
+        flex-direction: row;
+        /* Pasa el menú a vertical en móviles */
+    }
+}
