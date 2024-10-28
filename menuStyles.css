@@ -210,21 +210,22 @@ section {
     gap: 20px;
 }
 
-.dish {
+.plato {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.dish img {
+.plato img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.dish p {
+
+.plato p {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -240,11 +241,11 @@ section {
     font-family: 'Lato';
 }
 
-.dish:hover img {
+.plato:hover img {
     transform: scale(1.1);
 }
 
-.dish:hover p {
+.plato:hover p {
     opacity: 1;
 }
 
